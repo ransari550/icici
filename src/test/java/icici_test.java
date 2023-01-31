@@ -23,7 +23,7 @@ public class icici_test {
         driver = new ChromeDriver();
 
         driver.manage().window().maximize();
-        int i;
+        int i,j=6;
         for(i=0;i<=50;i++) {
             Thread.sleep(2000);
             driver.get("https://namegenerators.org/ind-name-generator-rd/");
@@ -39,10 +39,10 @@ public class icici_test {
             WebElement mob = driver.findElement(By.xpath("//input[@name=\"phoneno\"]"));
             WebElement limit = driver.findElement(By.xpath("//*[@id=\"wpcf7-f1331-p14-o1\"]/form/p[4]/label/span/input"));
             WebElement submit = driver.findElement(By.xpath("//input[@type=\"submit\"]"));
-            String nm= RandomString.make(5);
-            nm=nm.toLowerCase();
-            String nm2=RandomString.make(6);
-            nm2=nm2.toLowerCase();
+            //String nm= RandomString.make(5);
+            //nm=nm.toLowerCase();
+            //String nm2=RandomString.make(6);
+           // nm2=nm2.toLowerCase();
             int m1 = (int) (Math.random() * 10);
             int m2 = (int) (Math.random() * 10);
             int m3 = (int) (Math.random() * 10);
@@ -57,9 +57,11 @@ public class icici_test {
             email.sendKeys(em+m2+m4+m2+m6+"@gmail.com");
             Thread.sleep(2000);
             mob.click();
+            if(j>9)
+                j=6;
 
-
-            mob.sendKeys("9"+m2+m6+ m1 + m2 + m3 + m4 + m5 + m6 + m7);
+            mob.sendKeys(j+""+m2+m6+ m1 + m2 + m3 + m4 + m5 + m6 + m7);
+            j++;
             limit.sendKeys(m1+m4+"0000");
             Thread.sleep(1000);
             submit.click();
